@@ -1,0 +1,3 @@
+[submodule "Raspi_I2C"]
+	path = Raspi_I2C
+	url = https://github.com/RUI-LONG/Raspi-I2C.git
