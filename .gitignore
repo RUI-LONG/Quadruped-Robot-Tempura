@@ -2,4 +2,3 @@ memo
 __init__.py
 *.pyc
 depthai-python
-depthai_hand_tracker
