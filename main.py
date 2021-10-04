@@ -12,13 +12,14 @@ try:
     # time.sleep(2)
     # skill.standUp()
 
-    skill.layDown()
-    time.sleep(2)
-    skill.standUp()
-
     time.sleep(20)
-except:
+
+except KeyboardInterrupt:
     pass
+        
+except Exception as e:
+    print(e)
+
 device.close()
 time.sleep(1)
 print("Device Closed")
