@@ -18,8 +18,15 @@ The 'first_trigger_delay' in seconds specifies how long the pose has to stand be
 an initial event.
 
 """
+import time
+from Movement.movement import Skills
+from Raspi_I2C.matrix_servo_extension import MatrixServoExtension
+from depthai_hand_tracker.HandController import HandController
 
-from depthai_hand_tracker.examples.remote_control.HandController import HandController
+device = MatrixServoExtension()
+skill = Skills(device)
+print("Device Connected:", device.begin())
+time.sleep(2)
 
 def StandOrSit(event):
     event.print_line() 
@@ -27,10 +34,12 @@ def StandOrSit(event):
     print(hand_ang)
     if hand_ang > 1 or hand_ang < -1:
         print("sit")
+        skill.sitDown()
     else:
         print("stand")
+        skill.standUp()
 
-def Stop(event):
+def stop(event):
     pass
 
 def trackBall(event):
