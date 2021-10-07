@@ -3,7 +3,7 @@ import time
 class Body():
     def __init__(self):
         pass
-            
+
     def LeftF(self, arm_angle, hand_angle=-1, t=0):
         if hand_angle != -1:
             self.device.setAngle(self.left_f_hand, hand_angle)
