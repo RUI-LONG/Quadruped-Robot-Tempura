@@ -108,8 +108,7 @@ class Skills(Body):
         self.LeftF(130, 60)
 
     def test(self):
-        self.standUp()
-        # lf 60 80
+        pass
 
     def jump(self):
         # TODO
@@ -196,8 +195,13 @@ class Skills(Body):
         # self.LeftB(180, 170)
         pass
 
-    def stretchF(self, ):
-        pass
+    def stretchF(self):
+        self.standBy()
+        time.sleep(0.5)
+        for ang in range(0, 60, 1):
+            self.LeftF(150-int(ang*1.5), 140-ang)
+            self.RightF(30+int(ang*1.5), 40+ang)
+            time.sleep(0.005)
 
-    def stretchB(self, ):
+    def stretchB(self):
         pass

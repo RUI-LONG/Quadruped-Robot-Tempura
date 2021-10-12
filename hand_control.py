@@ -33,11 +33,20 @@ def StandOrSit(event):
     hand_ang = event.hand.rotation
     print(hand_ang)
     if hand_ang > 1 or hand_ang < -1:
-        print("sit")
+        # print("sit")
         skill.sitDown()
     else:
-        print("stand")
+        # print("stand")
         skill.standUp()
+def shakeRightHand(event):
+    event.print_line() 
+    print("right")
+    skill.shakeRightHand()
+
+def shakeLeftHand(event):
+    event.print_line() 
+    print("left")
+    skill.shakeLeftHand()
 
 def stop(event):
     pass
@@ -55,15 +64,25 @@ def shakeHand(event):
     pass
 
 
+# ALL_POSES = ["ONE","TWO","THREE","FOUR","FIVE","FIST","SEVEN","OK"]
+
 config = {
-    'renderer' : {'enable': True},
+    'renderer' : {'enable': False},
     
     'pose_actions' : [
-        # {'name': 'standUp', 'pose':'ONE', 'hand':'right', 'callback': 'standUp', "trigger":"enter", "first_trigger_delay":0.3},
-        {'name': 'StandOrSit', 'pose':'ONE', 'callback': 'StandOrSit', "trigger":"periodic", "first_trigger_delay":0, "next_trigger_delay": 0.2},
+        {'name': 'StandOrSit', 'pose':['ONE', 'SEVEN'], 'callback': 'StandOrSit', "trigger":"enter", "first_trigger_delay":0.2, "next_trigger_delay": 0.2},
+        {'name': 'shakeLeftHand', 'pose': 'FIVE', 'hand':'left', 'callback': 'shakeLeftHand', "trigger":"enter", "first_trigger_delay":0.2, "next_trigger_delay": 3},
+        {'name': 'shakeRightHand', 'pose': 'FIVE', 'hand':'right', 'callback': 'shakeRightHand', "trigger":"enter", "first_trigger_delay":0.2, "next_trigger_delay": 3},
 
         
     ]
 }
 
-HandController(config).loop()
+try:
+    skill.standBy()
+    HandController(config).loop()
+except KeyboardInterrupt:
+    pass
+device.close()
+time.sleep(2)
+print("Device Closed")

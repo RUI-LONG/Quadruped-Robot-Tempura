@@ -8,9 +8,10 @@ print("Device Connected:", device.begin())
 time.sleep(2)
 
 try:
-    # skill.layDown()
-    # time.sleep(2)
-    # skill.standUp()
+    print("layDown")
+    skill.layDown()
+    time.sleep(2)
+    skill.standUp()
 
     time.sleep(20)
 
