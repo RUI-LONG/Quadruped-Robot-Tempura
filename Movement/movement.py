@@ -56,7 +56,7 @@ class Skills(Body):
         time.sleep(0.1)
         self.LeftF(60, -1)
         self.RightF(130, -1)
-        self.LeftB(90, -1)
+        self.LeftB(95, -1)
         self.RightB(80, -1)
         # next: standBy
 
@@ -89,6 +89,7 @@ class Skills(Body):
                 self.RightF(ang, -1)
                 time.sleep(0.015)
         self.RightF(60, 130)
+        time.sleep(0.5)
 
     def shakeLeftHand(self, cnt=2):
         self.LeftB(180, 160)
@@ -106,9 +107,16 @@ class Skills(Body):
                 self.LeftF(ang, -1)
                 time.sleep(0.015)
         self.LeftF(130, 60)
+        time.sleep(0.5)
 
-    def test(self):
-        pass
+    def crazy(self, cnt=5):
+        for i in range(5):
+            self.standBy(0)
+            time.sleep(0.15)
+            self.standBy(50)
+            time.sleep(0.15)
+        self.standBy()
+        time.sleep(1)
 
     def jump(self):
         # TODO
@@ -132,14 +140,64 @@ class Skills(Body):
         self.LeftB(-1, 50)
         self.RightB(-1, 130)
 
-        time.sleep(0.03)
+        time.sleep(0.01)
         self.LeftB(115, -1)
         self.RightB(60, -1)
         self.LeftF(130, -1)
         self.RightF(60, -1)
 
     def walk(self, cnt=5):
-        pass
+        self.LeftF(150, 140)
+        self.RightF(30, 40)
+        self.LeftB(150, 140)
+        self.RightB(30, 40)
+
+        for i in range(5):
+            self.LeftF(90, 90) # 150, 140
+            self.LeftB(180, 150) # 150, 140
+            self.RightB(90, 0) # 30, 40
+            time.sleep(0.1)
+            self.RightF(0, 50) # 30, 40
+            self.RightB(90, 30) # 30, 40
+            time.sleep(0.1)
+            self.RightF(-1, 10) # 30, 40
+            time.sleep(0.1)
+            time.sleep(0.1)
+            self.RightB(-1, 90) # 30, 40
+
+            self.LeftF(180, 150) # 150, 140
+            self.RightB(90, 90) # 30, 40
+            time.sleep(0.1) 
+            self.RightF(90, 0) # 30, 40
+            self.LeftB(180, 130) # 150, 140
+            time.sleep(0.1)
+            self.LeftB(-1, 170) # 150, 140
+            time.sleep(0.1)
+            time.sleep(0.1)
+            self.RightF(-1, 90) # 30, 40
+
+            self.RightF(90, 90) # 30, 40
+            self.RightB(0, 30) # 30, 40
+            self.LeftB(90, 180) # 150, 140
+            time.sleep(0.1)
+            self.LeftF(180, 130) # 150, 140
+            self.LeftB(90, 150) # 150, 140
+            time.sleep(0.1)
+            self.LeftF(-1, 170) # 150, 140
+            time.sleep(0.1)
+            time.sleep(0.1)
+            self.LeftB(-1, 90) # 150, 140
+            
+            self.LeftB(90, 90) # 150, 140
+            self.RightF(0, 30) # 30, 40
+            time.sleep(0.1)
+            self.LeftF(90, 180) # 150, 140
+            self.RightB(0, 50) # 30, 40
+            time.sleep(0.1)
+            self.RightB(-1, 10) # 30, 40
+            time.sleep(0.1)
+            time.sleep(0.1)
+            self.LeftF(-1, 90) # 150, 140
 
     def pushUp(self, cnt=3):
         self.standUp()
@@ -173,35 +231,191 @@ class Skills(Body):
         self.standBy()
 
     def warmUp(self, cnt=2):
-        # TODO
-        # for _ in range(cnt):
-        #     self.RightB(40, 70)
-        #     self.LeftF(140, 110)
-
-        #     self.RightF(0, 10)
-        #     self.LeftB(180, 170)
-        #     time.sleep(0.2)
-
-        #     self.RightB(0, 10)
-        #     self.LeftF(180, 170)
-
-        #     self.RightF(40, 70)
-        #     self.LeftB(140, 110)
-        #     time.sleep(0.2)
-            
-        # self.RightB(0, 10)
-        # self.LeftF(180, 170)
-        # self.RightF(0, 10)
-        # self.LeftB(180, 170)
         pass
 
     def stretchF(self):
-        self.standBy()
+        self.standUp()
         time.sleep(0.5)
         for ang in range(0, 60, 1):
-            self.LeftF(150-int(ang*1.5), 140-ang)
-            self.RightF(30+int(ang*1.5), 40+ang)
+            self.LeftF(150-int(ang*2)+10, 140-ang)
+            self.RightF(30+int(ang*2)-10, 40+ang)
             time.sleep(0.005)
+        time.sleep(0.5)
+        self.standBy()
+        time.sleep(1)
 
     def stretchB(self):
+        # TODO
         pass
+        self.standUp()
+        time.sleep(0.5)
+        # for ang in range(0, 60, 1):
+        #     self.LeftF(150-int(ang*1.5), 140-ang)
+        #     self.RightF(30+int(ang*1.5), 40+ang)
+        #     time.sleep(0.005)
+
+    def yoga(self):
+        self.standBy()
+        
+        self.LeftB(120, 140)
+        self.RightF(60, 40)
+        time.sleep(0.15)
+        
+        self.RightB(0, 180)
+        time.sleep(0.15)
+        for ang in range(0, 60, 1):
+            self.LeftF(160-ang*2, 140-ang)
+
+        for _ in range(6):
+            for ang in range(0, 40, 1):
+                self.LeftF(-1, 10+ang)
+                self.RightB(-1, 180+ang)
+                time.sleep(0.001)
+
+            for ang in range(40, 0, -1):
+                self.LeftF(-1, 50+ang)
+                self.RightB(-1, 140+ang)
+                time.sleep(0.001)
+        self.standBy()
+        time.sleep(1)
+
+
+    def t1(self):
+        self.LeftF(150, 130)
+        time.sleep(0.1*2)
+        self.LeftB(130, 80)
+        self.RightF(70, 80)
+        time.sleep(0.1*2)
+        self.RightB(40, 20)
+
+    def t2(self):
+        self.LeftB(170, 130)
+        time.sleep(0.1*2)
+        self.RightF(70, 130)
+        self.RightB(70, 80)
+        time.sleep(0.1*2)
+        self.LeftF(150, 160)
+
+    def t3(self):
+        self.RightF(10, 50)
+        time.sleep(0.1*2)
+        self.LeftF(110, 100)
+        self.RightB(70, 130)
+        time.sleep(0.1*2)
+        self.LeftB(150, 160)
+
+
+    def t4(self):
+        self.RightB(10, 50)
+        time.sleep(0.1*2)
+        self.LeftF(110, 70)
+        self.LeftB(110, 100)
+        time.sleep(0.1*2)
+        self.RightF(40, 20)
+
+    def t5(self):
+        for _ in range(20):
+            self.t1()
+            self.t2()
+            self.t3()
+            self.t4()
+
+    def t6(self):
+        for i in range(15):
+            self.LeftF(170, 130)
+            time.sleep(0.3)
+            self.LeftF(150, 160)
+            time.sleep(0.1)
+            self.LeftF(110, 100)
+            time.sleep(0.2)
+            self.LeftF(110, 70)
+            time.sleep(0.1)
+
+    def t7(self):
+        self.LeftF(150, 140)
+        self.RightF(30, 40)
+        self.LeftB(150, 140)
+        self.RightB(30, 40)
+        ang = 10
+        ang2 = 20
+        for i in range(5):
+            self.LeftF(90+ang2, 90-ang) # 150, 140
+            time.sleep(0.1)
+            time.sleep(0.1)
+            time.sleep(0.1)
+            time.sleep(0.1)
+
+            self.LeftF(180, 150) # 150, 140
+            time.sleep(0.1) 
+            time.sleep(0.1)
+            time.sleep(0.1)
+            time.sleep(0.1)
+
+            time.sleep(0.1)
+            self.LeftF(180, 130-ang) # 150, 140
+            time.sleep(0.1)
+            self.LeftF(-1, 170-ang) # 150, 140
+            time.sleep(0.1)
+            time.sleep(0.1)
+            
+            time.sleep(0.1)
+            self.LeftF(90+ang2, 180-ang) # 150, 140
+            time.sleep(0.1)
+            time.sleep(0.1)
+            time.sleep(0.1)
+            self.LeftF(-1, 90-ang) # 150, 140
+            
+
+    def t8(self):
+        self.LeftF(150, 140)
+        self.RightF(30, 40)
+        self.LeftB(150, 140)
+        self.RightB(30, 40)
+
+        for i in range(5):
+            self.LeftF(90, 90) # 150, 140
+            self.LeftB(180, 150) # 150, 140
+            self.RightB(90, 0) # 30, 40
+            time.sleep(0.1)
+            self.RightF(0, 50) # 30, 40
+            self.RightB(90, 30) # 30, 40
+            time.sleep(0.1)
+            self.RightF(-1, 10) # 30, 40
+            time.sleep(0.1)
+            time.sleep(0.1)
+            self.RightB(-1, 90) # 30, 40
+
+            self.LeftF(180, 150) # 150, 140
+            self.RightB(90, 90) # 30, 40
+            time.sleep(0.1) 
+            self.RightF(90, 0) # 30, 40
+            self.LeftB(180, 130) # 150, 140
+            time.sleep(0.1)
+            self.LeftB(-1, 170) # 150, 140
+            time.sleep(0.1)
+            time.sleep(0.1)
+            self.RightF(-1, 90) # 30, 40
+
+            self.RightF(90, 90) # 30, 40
+            self.RightB(0, 30) # 30, 40
+            self.LeftB(90, 180) # 150, 140
+            time.sleep(0.1)
+            self.LeftF(180, 130) # 150, 140
+            self.LeftB(90, 150) # 150, 140
+            time.sleep(0.1)
+            self.LeftF(-1, 170) # 150, 140
+            time.sleep(0.1)
+            time.sleep(0.1)
+            self.LeftB(-1, 90) # 150, 140
+            
+            self.LeftB(90, 90) # 150, 140
+            self.RightF(0, 30) # 30, 40
+            time.sleep(0.1)
+            self.LeftF(90, 180) # 150, 140
+            self.RightB(0, 50) # 30, 40
+            time.sleep(0.1)
+            self.RightB(-1, 10) # 30, 40
+            time.sleep(0.1)
+            time.sleep(0.1)
+            self.LeftF(-1, 90) # 150, 140
+            

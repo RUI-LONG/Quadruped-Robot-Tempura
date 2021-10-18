@@ -29,27 +29,38 @@ print("Device Connected:", device.begin())
 time.sleep(2)
 
 def StandOrSit(event):
-    event.print_line() 
     hand_ang = event.hand.rotation
-    print(hand_ang)
     if hand_ang > 1 or hand_ang < -1:
-        # print("sit")
         skill.sitDown()
     else:
-        # print("stand")
         skill.standUp()
+
+def pushUpOrNot(event):
+    hand_ang = event.hand.rotation
+    if hand_ang > 1 or hand_ang < -1:
+        skill.pushUp()
+    else:
+        skill.standUp()
+
 def shakeRightHand(event):
     event.print_line() 
-    print("right")
     skill.shakeRightHand()
 
 def shakeLeftHand(event):
     event.print_line() 
-    print("left")
     skill.shakeLeftHand()
 
-def stop(event):
-    pass
+def stretch(event):
+    skill.stretchF()
+
+def standBy(event):
+    skill.standBy()
+
+def carzy(event):
+    skill.crazy()
+
+def yoga(event):
+    skill.yoga()
 
 def trackBall(event):
     pass
@@ -60,21 +71,34 @@ def walkForward(event):
 def walkBackward(event):
     pass
 
-def shakeHand(event):
-    pass
 
+# ALL_POSES = ["ONE","TWO","THREE","FOUR","FIVE", "ROCK", "FIST","SEVEN","OK","FUCK1","FUCK2"]
+# Registed = ["THREE", "FOUR", "OK"]
 
-# ALL_POSES = ["ONE","TWO","THREE","FOUR","FIVE","FIST","SEVEN","OK"]
 
 config = {
     'renderer' : {'enable': False},
     
     'pose_actions' : [
-        {'name': 'StandOrSit', 'pose':['ONE', 'SEVEN'], 'callback': 'StandOrSit', "trigger":"enter", "first_trigger_delay":0.2, "next_trigger_delay": 0.2},
-        {'name': 'shakeLeftHand', 'pose': 'FIVE', 'hand':'left', 'callback': 'shakeLeftHand', "trigger":"enter", "first_trigger_delay":0.2, "next_trigger_delay": 3},
-        {'name': 'shakeRightHand', 'pose': 'FIVE', 'hand':'right', 'callback': 'shakeRightHand', "trigger":"enter", "first_trigger_delay":0.2, "next_trigger_delay": 3},
+        {'name': 'StandOrSit', 'pose':['ONE', 'SEVEN'], 'hand':'left', 'callback': 'StandOrSit', "trigger":"enter", 
+            "first_trigger_delay":0.1, "next_trigger_delay": 0},
 
-        
+        {'name': 'pushUpOrNot', 'pose':['ONE', 'SEVEN'], 'hand':'right', 'callback': 'pushUpOrNot', "trigger":"enter", 
+            "first_trigger_delay":0.1, "next_trigger_delay": 0},
+
+        {'name': 'stretch', 'pose':'TWO', 'callback': 'stretch', "trigger":"enter", 
+            "first_trigger_delay":0.2, "next_trigger_delay": 0},
+
+        {'name': 'yoga', 'pose':'ROCK', 'callback': 'yoga', "trigger":"enter", 
+            "first_trigger_delay":0.2, "next_trigger_delay": 0},
+
+        {'name': 'carzy', 'pose': ['FUCK1', 'FUCK2'], 'callback': 'carzy', "trigger":"enter", 
+            "first_trigger_delay":0.2, "next_trigger_delay": 0},
+
+        {'name': 'shakeLeftHand', 'pose': 'FIVE', 'hand':'left', 'callback': 'shakeLeftHand', "trigger":"enter", 
+            "first_trigger_delay":0.2, "next_trigger_delay": 0},
+        {'name': 'shakeRightHand', 'pose': 'FIVE', 'hand':'right', 'callback': 'shakeRightHand', "trigger":"enter", 
+            "first_trigger_delay":0.2, "next_trigger_delay": 0}
     ]
 }
 
