@@ -1,5 +1,5 @@
-[submodule "Raspi_I2C"]
-	path = Raspi_I2C
+[submodule "Raspi-I2C"]
+	path = Raspi-I2C
 	url = https://github.com/RUI-LONG/Raspi-I2C.git
 
 [submodule "depthai_hand_tracker"]

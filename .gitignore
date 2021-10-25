@@ -2,3 +2,4 @@ memo
 __init__.py
 *.pyc
 depthai-python
+tmp_code.py
