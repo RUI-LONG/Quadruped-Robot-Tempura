@@ -20,7 +20,7 @@ an initial event.
 """
 import time
 from Movement.movement import Skills
-from Movement.pid import PID
+# from Movement.pid import PID
 from Raspi_I2C.matrix_servo_extension import MatrixServoExtension
 from depthai_hand_tracker.HandController import HandController
 
@@ -31,7 +31,7 @@ skill = Skills(device)
 
 status = device.begin()
 print("Device Connected:", status)
-pid = PID(1, 0.01, 0.01)
+# pid = PID(1, 0.01, 0.01)
 time.sleep(2)
 
 def StandOrSit(event):
@@ -135,9 +135,11 @@ config = {
 
 try:
     if status:
+        skill.headTurn(80)
         skill.standBy()
         HandController(config).loop()
-except:
+except Exception as e:
+    print(e)
     device.close()
     pass
 

@@ -23,7 +23,7 @@ if device_status:
 
     while True:
         try:
-            _input = input("Input Angle:").split(" ")
+            _input = input("Input Command:").split(" ")
             if len(_input) == 1:
                 _body[_input[0]]()
             elif len(_input) == 3:
